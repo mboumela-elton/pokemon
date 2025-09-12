@@ -1,0 +1,42 @@
+# Dossiers de build
+cmake-build-debug/
+cmake-build-release/
+build/
+
+# Dossiers générés par CMake
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+
+# Fichiers de configuration de CLion
+.idea/
+*.iml
+
+# Fichiers temporaires
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.class
+*.dll
+*.so
+*.dylib
+*.log
+
+# Fichiers de sauvegarde
+*~
+*.bak
+*.tmp
+
+# Fichiers de sortie
+*.pdb
+*.idb
+*.ipch
+*.tlog
+*.lastbuildstate
+
+# Ignore les fichiers de configuration utilisateur
+*.user
+*.userprefs
