@@ -11,10 +11,8 @@ class Pokedex : public PokemonVector {
 
 private:
     static Pokedex* instance;
-    static void loadFromCSV(const std::string& filename);
-
-protected:
-    Pokedex(){};
+    void loadFromCSV(const std::string& filename);
+    Pokedex();
 
 public:
 

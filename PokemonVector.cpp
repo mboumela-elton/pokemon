@@ -2,8 +2,6 @@
 #include <iostream>
 #include <algorithm>
 
-vector<Pokemon> PokemonVector::pokemons;
-
 void PokemonVector::addPokemon(const Pokemon& pokemon) {
     pokemons.push_back(pokemon);
 }

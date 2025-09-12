@@ -9,10 +9,10 @@ using std::vector;
 class PokemonVector
 {
 protected:
-    static vector<Pokemon> pokemons;
+    vector<Pokemon> pokemons;
 
 public:
-    static void addPokemon(const Pokemon& pokemon);
+    void addPokemon(const Pokemon& pokemon);
 
     void displayAll() ;
 

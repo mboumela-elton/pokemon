@@ -8,23 +8,18 @@ Pokemon::Pokemon(int id, const std::string& name, double hitPoint, double attack
 
 Pokemon::Pokemon(const Pokemon& other)
     : id(other.id), name(other.name), hitPoint(other.hitPoint), attack(other.attack), defense(other.defense), generation(other.generation) {
-    std::cout << "Constructeur de recopie de " << name << std::endl;
+    // std::cout << "Constructeur de recopie de " << name << std::endl;
     pokemonCount++;
 }
 
 
 Pokemon::~Pokemon() {
     pokemonCount--; // Decremente le compteur lors de la destruction d'un Pokemon
-    std::cout << "Destructeur appele pour " << name << std::endl;
+    // std::cout << "Destructeur appele pour " << name << std::endl;
 }
 
 void Pokemon::displayInfo() const {
-    std::cout << "ID: " << id << std::endl;
-    std::cout << "Nom: " << name << std::endl;
-    std::cout << "Points de vie: " << hitPoint << std::endl;
-    std::cout << "Attaque: " << attack << std::endl;
-    std::cout << "Defense: " << defense << std::endl;
-    std::cout << "Generation: " << generation << std::endl;
+    std::cout << id << "," << name << " , " << hitPoint << " , " << attack << " , " << defense << " , " << generation << std::endl;
 }
 
 int Pokemon::getId() const { return id; }

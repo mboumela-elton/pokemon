@@ -1,4 +1,5 @@
 #include "Pokedex.hpp"
+#include "PokemonVector.hpp"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -64,10 +65,13 @@ void Pokedex::loadFromCSV(const std::string& filename) {
     file.close();
 }
 
+Pokedex::Pokedex() {
+    loadFromCSV("../pokedex.csv");
+}
+
 Pokedex* Pokedex::getInstance() {
     if (instance == nullptr) {
         instance = new Pokedex();
-        loadFromCSV("../pokedex.csv");
     }
     return instance;
 }
