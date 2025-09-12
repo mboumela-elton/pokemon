@@ -14,7 +14,7 @@ protected:
 public:
     void addPokemon(const Pokemon& pokemon);
 
-    void displayAll() ;
+    void displayAll() const;
 
     int getCount() ;
     void removePokemon(int id);

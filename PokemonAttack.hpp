@@ -12,7 +12,7 @@
 
 class PokemonAttack : public PokemonVector {
 private:
-    static const int MAX_POKEMON = 6;
+    static constexpr int MAX_POKEMON = 6;
 
 public:
     // Créer une équipe d'attaque à partir de la PokemonParty

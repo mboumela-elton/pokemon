@@ -10,6 +10,8 @@
 #include <string>
 #include <algorithm>
 
+#include "utils/ensea_log.h"
+
 
 bool PokemonParty::extractPokemon(int id) {
     auto it = std::remove_if(pokemons.begin(), pokemons.end(), [id](const Pokemon& p) {
@@ -18,10 +20,12 @@ bool PokemonParty::extractPokemon(int id) {
 
     if (it != pokemons.end()) {
         pokemons.erase(it, pokemons.end());
-        std::cout << "Pokémon avec ID " << id << " a été extrait." << std::endl;
+        ensea_logging::log_debug(
+            "Pokémon avec ID ", id, " a été extrait."
+        );
         return true;
     } else {
-        std::cout << "Aucun Pokémon trouvé avec ID " << id << "." << std::endl;
+        ensea_logging::log_error("Aucun Pokémon trouvé avec ID ", id, ".");
         return false;
     }
 }
@@ -36,13 +40,13 @@ vector<Pokemon> PokemonParty::getPokemons() const {
 
 void PokemonParty::displayParty() const {
     if (pokemons.empty()) {
-        std::cout << "Aucun Pokémon dans la partie." << std::endl;
+        ensea_logging::log_error("Aucun Pokémon dans la partie.");
         return;
     }
 
-    std::cout << "Pokémon dans la partie :" << std::endl;
+    ensea_logging::log_debug("Pokémons dans la partie :");
     for (const auto& pokemon : pokemons) {
         pokemon.displayInfo();
-        std::cout << pokemon.getId() << " / " << pokemon.getName() << std::endl;
+        // REVIEW : Previously had 2 print statements here
     }
 }
