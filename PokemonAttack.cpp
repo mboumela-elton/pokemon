@@ -7,9 +7,11 @@
 #include "PokemonParty.hpp"
 #include  <algorithm>
 
+#include "utils/ensea_log.h"
+
 void PokemonAttack::createAttackTeam(const PokemonParty& party) {
     if (party.getCount() == 0) {
-        std::cout << "Aucun Pokémon dans la partie pour créer une équipe d'attaque." << std::endl;
+        ensea_logging::log_error("Aucun Pokémon dans la partie pour créer une équipe d'attaque.");
         return;
     }
 
@@ -20,12 +22,20 @@ void PokemonAttack::createAttackTeam(const PokemonParty& party) {
         if (pokemons.size() < MAX_POKEMON) {
             pokemons.push_back(pokemon);
         } else {
-            std::cout << "Équipe d'attaque pleine. Maximum de " << MAX_POKEMON << " Pokémon." << std::endl;
+            ensea_logging::log_error(
+                "Équipe d'attaque pleine. Maximum de ",
+                MAX_POKEMON,
+                " Pokémon."
+            );
             break;
         }
     }
 
-    std::cout << "Équipe d'attaque créée avec " << pokemons.size() << " Pokémon." << std::endl;
+    ensea_logging::log_debug(
+        "Équipe d'attaque créée avec ",
+        pokemons.size(),
+        " Pokémon."
+    );
 }
 
 void PokemonAttack::reintegratePokemon(PokemonParty& party, int id) {
@@ -37,21 +47,28 @@ void PokemonAttack::reintegratePokemon(PokemonParty& party, int id) {
         // Réintégrer le Pokémon dans la partie
         party.addPokemon(*it);
         pokemons.erase(it, pokemons.end());
-        std::cout << "Pokémon avec ID " << id << " a été réintégré dans la partie." << std::endl;
+        ensea_logging::log_info(
+            "Pokémon avec ID ",
+            id,
+            " a été réintégré dans la partie."
+        );
     } else {
-        std::cout << "Aucun Pokémon trouvé avec ID " << id << " dans l'équipe d'attaque." << std::endl;
+        ensea_logging::log_error(
+            "Aucun Pokémon trouvé avec ID ",
+            id,
+            " dans l'équipe d'attaque."
+        );
     }
 }
 
 void PokemonAttack::displayAttackTeam() const {
     if (pokemons.empty()) {
-        std::cout << "Aucune équipe d'attaque formée." << std::endl;
+        ensea_logging::log_error("Aucune équipe d'attaque formée.");
         return;
     }
 
-    std::cout << "Équipe d'attaque :" << std::endl;
+    ensea_logging::log_debug("Équipe d'attaque :");
     for (const auto& pokemon : pokemons) {
         pokemon.displayInfo();
-        std::cout << pokemon.getId() << " / " << pokemon.getName() << std::endl;
     }
 }

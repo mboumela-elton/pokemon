@@ -15,7 +15,8 @@ add_executable(pokemon main.cpp
         PokemonAttack.cpp
         PokemonAttack.hpp
         PokemonAttack.cpp
-        PokemonAttack.hpp)
+        PokemonAttack.hpp
+        utils/ensea_log.cpp)
 
 target_link_libraries(pokemon
         sfml-graphics

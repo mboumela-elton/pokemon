@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "utils/ensea_log.h"
+
 Pokedex* Pokedex::instance = nullptr;
 
 void Pokedex::loadFromCSV(const std::string& filename) {
@@ -13,7 +15,7 @@ void Pokedex::loadFromCSV(const std::string& filename) {
     std::string line;
 
     if (!file.is_open()) {
-        std::cerr << "Erreur lors de l'ouverture du fichier " << filename << std::endl;
+        ensea_logging::log_error("Erreur lors de l'ouverture du fichier ", filename);
         return;
     }
 
@@ -57,7 +59,7 @@ void Pokedex::loadFromCSV(const std::string& filename) {
             Pokemon pokemon(id, name, hitPoint, attack, defense, generation);
             addPokemon(pokemon);
             } else {
-                std::cerr << "Erreur lors de la lecture de la ligne: " << line << std::endl;
+                ensea_logging::log_error("Erreur lors de la lecture de la ligne: ", line);
                 continue;
             }
     }

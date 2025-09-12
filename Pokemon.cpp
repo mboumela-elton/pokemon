@@ -1,6 +1,8 @@
 #include "Pokemon.hpp"
 #include <iostream>
 
+#include "utils/ensea_log.h"
+
 int Pokemon::pokemonCount = 0;
 Pokemon::Pokemon(int id, const std::string& name, double hitPoint, double attack, double defense, int generation)
     : id(id), name(name), hitPoint(hitPoint), attack(attack), defense(defense), generation(generation) {
@@ -19,7 +21,14 @@ Pokemon::~Pokemon() {
 }
 
 void Pokemon::displayInfo() const {
-    std::cout << id << "," << name << " , " << hitPoint << " , " << attack << " , " << defense << " , " << generation << std::endl;
+    ensea_logging::log_debug(
+        id,
+        " | ", name,
+        " | ", hitPoint,
+        " | ", attack,
+        " | ", defense,
+        " | ", generation
+    );
 }
 
 int Pokemon::getId() const { return id; }
@@ -33,7 +42,7 @@ void Pokemon::takeDamage(double damage) {
     hitPoint -= damage;
     if (hitPoint < 0) {
         hitPoint = 0;
-        std::cout << name << " est mort !" << std::endl;
+        ensea_logging::log_info(name, " est mort !");
     }
 }
 
@@ -41,9 +50,18 @@ void Pokemon::strike(Pokemon& target) const {
     if (attack > target.getDefense()) {
         double damage = attack - target.getDefense();
         target.takeDamage(damage);
-        std::cout << name << " attaque " << target.getName() << " et inflige " << damage << " degats !" << std::endl;
-        std::cout << target.getName() << " a maintenant " << target.getHitPoint() << " points de vie." << std::endl;
+        ensea_logging::log_debug(
+            name, " attaque ", target.getName(),
+            " et inflige ", damage, " degats !"
+        );
+        ensea_logging::log_debug(
+            target.getName(), " a maintenant ",
+            target.getHitPoint(), " points de vie."
+        );
     } else {
-        std::cout << name << " attaque " << target.getName() << " mais ça ne fait pas assez de degats !" << std::endl;
+        ensea_logging::log_debug(
+            name, " attaque ", target.getName(),
+            " mais ça ne fait pas assez de degats !"
+        );
     }
 }

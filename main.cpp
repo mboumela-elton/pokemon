@@ -3,6 +3,7 @@
 #include "Pokemon.hpp"
 #include "PokemonVector.hpp"
 #include  "Pokedex.hpp"
+#include "utils/ensea_log.h"
 
 int main() {
     // Pokemon pikachu(1, "Pikachu", 35.0, 55.0, 40.0, 1);
@@ -23,7 +24,7 @@ int main() {
     Pokedex* pokedex = Pokedex::getInstance();
 
     // Afficher tous les Pokémon ajoutés
-    std::cout << "Liste des Pokémon dans le Pokédex :" << std::endl;
+    ensea_logging::log_debug("Liste des Pokémon dans le Pokédex :");
     pokedex->displayAll();
 
 

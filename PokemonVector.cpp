@@ -2,6 +2,8 @@
 #include <iostream>
 #include <algorithm>
 
+#include "utils/ensea_log.h"
+
 void PokemonVector::addPokemon(const Pokemon& pokemon) {
     pokemons.push_back(pokemon);
 }
@@ -9,7 +11,6 @@ void PokemonVector::addPokemon(const Pokemon& pokemon) {
 void PokemonVector::displayAll() {
     for (const auto& pokemon : pokemons) {
         pokemon.displayInfo();
-        std::cout << pokemon.getId() << " / " << pokemon.getName() << std::endl;
     }
 }
 
@@ -24,8 +25,12 @@ void PokemonVector::removePokemon(int id) {
 
     if (it != pokemons.end()) {
         pokemons.erase(it, pokemons.end());
-        std::cout << "Pokémon avec ID " << id << " a été supprimé." << std::endl;
+        ensea_logging::log_debug(
+            "Pokémon avec ID ", id, " a été supprimé."
+        );
     } else {
-        std::cout << "Aucun Pokémon trouvé avec ID " << id << "." << std::endl;
+        ensea_logging::log_debug(
+            "Aucun Pokémon trouvé avec ID ", id, "."
+        );
     }
 }
