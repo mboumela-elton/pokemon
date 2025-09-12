@@ -39,6 +39,11 @@ double Pokemon::getDefense() const { return defense; }
 int Pokemon::getGeneration() const { return generation; }
 
 void Pokemon::takeDamage(double damage) {
+    if (damage < 0) {
+        ensea_logging::log_error("Damage was negative: ", damage);
+        return;
+    }
+
     hitPoint -= damage;
     if (hitPoint < 0) {
         hitPoint = 0;

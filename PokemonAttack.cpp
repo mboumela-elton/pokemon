@@ -70,5 +70,6 @@ void PokemonAttack::displayAttackTeam() const {
     ensea_logging::log_debug("Équipe d'attaque :");
     for (const auto& pokemon : pokemons) {
         pokemon.displayInfo();
+        // REVIEW : Previously had 2 print statements here
     }
 }

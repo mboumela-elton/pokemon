@@ -8,9 +8,10 @@ void PokemonVector::addPokemon(const Pokemon& pokemon) {
     pokemons.push_back(pokemon);
 }
 
-void PokemonVector::displayAll() {
+void PokemonVector::displayAll() const {
     for (const auto& pokemon : pokemons) {
         pokemon.displayInfo();
+        // REVIEW : Previously had 2 print statements here
     }
 }
 

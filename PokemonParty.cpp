@@ -47,5 +47,6 @@ void PokemonParty::displayParty() const {
     ensea_logging::log_debug("Pokémons dans la partie :");
     for (const auto& pokemon : pokemons) {
         pokemon.displayInfo();
+        // REVIEW : Previously had 2 print statements here
     }
 }
