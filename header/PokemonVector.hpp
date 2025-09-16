@@ -12,14 +12,16 @@ protected:
     vector<Pokemon> pokemons;
 
 public:
+    virtual ~PokemonVector() = default;
+
     void addPokemon(const Pokemon& pokemon);
 
     void displayAll() const;
 
     int getCount() ;
     void removePokemon(int id);
-    virtual Pokemon getPokemonById(int id) = 0;
-    virtual Pokemon getPokemonByName(const std::string& name) = 0;
+    virtual Pokemon* getPokemonById(int id) = 0;
+    virtual Pokemon* getPokemonByName(const std::string& name) = 0;
 };
 
 #endif // POKEMONVECTOR_H

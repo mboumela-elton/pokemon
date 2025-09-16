@@ -3,20 +3,20 @@ project(pokemon)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(pokemon main.cpp
-        Pokemon.cpp
-        Pokemon.hpp
-        PokemonVector.cpp
-        PokemonVector.hpp
-        Pokedex.cpp
-        Pokedex.hpp
-        PokemonParty.cpp
-        PokemonParty.hpp
-        PokemonAttack.cpp
-        PokemonAttack.hpp
-        PokemonAttack.cpp
-        PokemonAttack.hpp
-        utils/ensea_log.cpp)
+add_executable(pokemon src/main.cpp
+        src/Pokemon.cpp
+        header/Pokemon.hpp
+        src/PokemonVector.cpp
+        header/PokemonVector.hpp
+        src/Pokedex.cpp
+        header/Pokedex.hpp
+        src/PokemonParty.cpp
+        header/PokemonParty.hpp
+        src/PokemonAttack.cpp
+        header/PokemonAttack.hpp
+        src/PokemonAttack.cpp
+        header/PokemonAttack.hpp
+        src/utils/ensea_log.cpp)
 
 target_link_libraries(pokemon
         sfml-graphics

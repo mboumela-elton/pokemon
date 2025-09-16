@@ -1,7 +1,7 @@
-#include "Pokemon.hpp"
+#include "../header/Pokemon.hpp"
 #include <iostream>
 
-#include "utils/ensea_log.h"
+#include "./utils/ensea_log.h"
 
 int Pokemon::pokemonCount = 0;
 Pokemon::Pokemon(int id, const std::string& name, double hitPoint, double attack, double defense, int generation)

@@ -15,12 +15,12 @@ private:
     Pokedex();
 
 public:
-
+    Pokedex(Pokedex& other) = delete;
     static Pokedex* getInstance();
-    Pokemon clonePokemon(const std::string name) const;
+    Pokemon* clonePokemon(const std::string& name) const;
 
-    Pokemon getPokemonById(int id) override;
-    Pokemon getPokemonByName(const std::string& name) override;
+    Pokemon* getPokemonById(int id) override;
+    Pokemon* getPokemonByName(const std::string& name) override;
 };
 
 #endif // POKEDEX_H

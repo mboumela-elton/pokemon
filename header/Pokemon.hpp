@@ -5,6 +5,7 @@
 using std::string;
 
 class Pokemon {
+
 private:
     int id;
     string name;

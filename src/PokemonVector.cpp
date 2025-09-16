@@ -1,8 +1,8 @@
-#include "PokemonVector.hpp"
+#include "../header/PokemonVector.hpp"
 #include <iostream>
 #include <algorithm>
 
-#include "utils/ensea_log.h"
+#include "./utils/ensea_log.h"
 
 void PokemonVector::addPokemon(const Pokemon& pokemon) {
     pokemons.push_back(pokemon);
@@ -11,7 +11,6 @@ void PokemonVector::addPokemon(const Pokemon& pokemon) {
 void PokemonVector::displayAll() const {
     for (const auto& pokemon : pokemons) {
         pokemon.displayInfo();
-        // REVIEW : Previously had 2 print statements here
     }
 }
 

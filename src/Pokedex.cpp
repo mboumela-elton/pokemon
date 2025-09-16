@@ -1,12 +1,12 @@
-#include "Pokedex.hpp"
-#include "PokemonVector.hpp"
+#include "../header/Pokedex.hpp"
+#include "../header/PokemonVector.hpp"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
 
-#include "utils/ensea_log.h"
+#include "./utils/ensea_log.h"
 
 Pokedex* Pokedex::instance = nullptr;
 
@@ -30,7 +30,8 @@ void Pokedex::loadFromCSV(const std::string& filename) {
         bool legendary;
 
         // Lire les champs séparés par des virgules
-        if (std::getline(iss, legendaryStr, ',') && // Ignorer le premier champ (ID)
+        if ((iss >> id) &&
+            std::getline(iss, legendaryStr, ',') && // Ignorer le premier champ (ID)
             std::getline(iss, name, ',') &&
             std::getline(iss, type1, ',') &&
             std::getline(iss, type2, ',') &&
@@ -78,28 +79,28 @@ Pokedex* Pokedex::getInstance() {
     return instance;
 }
 
-Pokemon Pokedex::clonePokemon(const std::string name) const {
-      for (const auto& pokemon : pokemons) {
+Pokemon* Pokedex::clonePokemon(const std::string& name) const {
+    for (const Pokemon& pokemon : pokemons) {
         if (pokemon.getName() == name) {
-          return pokemon;
-      }
+            return new Pokemon(pokemon);
+        }
     }
     throw std::runtime_error("Pokémon non trouvé");
 }
 
-Pokemon Pokedex::getPokemonById(int id) {
-for (const auto& pokemon : pokemons) {
+Pokemon* Pokedex::getPokemonById(int id) {
+for (const Pokemon& pokemon : pokemons) {
          if (pokemon.getId() == id) {
-           return pokemon; // Retourne le Pokémon trouvé
+           return new Pokemon(pokemon);
      }
     }
     throw std::runtime_error("Pokémon non trouvé avec l'ID " + std::to_string(id));
     }
 
-Pokemon Pokedex::getPokemonByName(const std::string& name) {
+Pokemon* Pokedex::getPokemonByName(const std::string& name) {
     for (const auto& pokemon : pokemons) {
         if (pokemon.getName() == name) {
-            return pokemon;
+            return new Pokemon(pokemon);
         }
     }
     throw std::runtime_error("Pokémon non trouvé avec le nom " + name);
