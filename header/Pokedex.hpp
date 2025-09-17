@@ -2,9 +2,6 @@
 #define POKEDEX_H
 
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <memory>
 #include "PokemonVector.hpp"
 
 class Pokedex : public PokemonVector {

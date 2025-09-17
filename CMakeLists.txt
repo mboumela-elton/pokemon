@@ -14,13 +14,15 @@ add_executable(pokemon src/main.cpp
         header/PokemonParty.hpp
         src/PokemonAttack.cpp
         header/PokemonAttack.hpp
-        src/PokemonAttack.cpp
-        header/PokemonAttack.hpp
-        src/utils/ensea_log.cpp)
-
-target_link_libraries(pokemon
-        sfml-graphics
-        sfml-window
-        sfml-system
-        sfml-audio
-)
+        src/utils/ensea_log.cpp
+        header/State.hpp
+        src/StateMachine.cpp
+        header/StateMachine.hpp
+        src/WelcomeState.cpp
+        header/WelcomeState.hpp
+        src/ExplorationState.cpp
+        header/ExplorationState.hpp
+        src/BattleState.cpp
+        header/BattleState.hpp
+        src/GameOverState.cpp
+        header/GameOverState.hpp)

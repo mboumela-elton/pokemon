@@ -1,4 +1,4 @@
-
+/*
 #include <iostream>
 #include "../header/Pokedex.hpp"
 #include "../header/PokemonAttack.hpp"
@@ -37,6 +37,26 @@ int main() {
         pokemonAttack->addPokemon(*(pokemonParty->getPokemonById(i)));
     }
     pokemonAttack->displayParty();
+
+    return 0;
+}
+*/
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include "../header/StateMachine.hpp"
+#include "../header/WelcomeState.hpp"
+
+int main() {
+    srand(static_cast<unsigned>(time(0))); // Initialiser le générateur de nombres aléatoires
+    StateMachine sm;
+    sm.setState(new WelcomeState());
+
+    while (true) {
+        sm.update();
+    }
 
     return 0;
 }
