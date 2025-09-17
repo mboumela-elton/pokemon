@@ -52,21 +52,30 @@ void Pokemon::takeDamage(double damage) {
 }
 
 void Pokemon::strike(Pokemon& target) const {
-    if (attack > target.getDefense()) {
-        double damage = attack - target.getDefense();
-        target.takeDamage(damage);
-        ensea_logging::log_debug(
-            name, " attaque ", target.getName(),
-            " et inflige ", damage, " degats !"
-        );
-        ensea_logging::log_debug(
-            target.getName(), " a maintenant ",
-            target.getHitPoint(), " points de vie."
-        );
-    } else {
-        ensea_logging::log_debug(
-            name, " attaque ", target.getName(),
-            " mais ça ne fait pas assez de degats !"
-        );
+    if (hitPoint > 0)
+    {
+        if (attack > target.getDefense()) {
+            double damage = attack - target.getDefense();
+            target.takeDamage(damage);
+            ensea_logging::log_debug(
+                name, " attaque ", target.getName(),
+                " et inflige ", damage, " degats !"
+            );
+            ensea_logging::log_debug(
+                target.getName(), " a maintenant ",
+                target.getHitPoint(), " points de vie."
+            );
+        } else{
+            double damage =  (target.getDefense() - attack)/2;
+            target.takeDamage(damage);
+            ensea_logging::log_debug(
+                name, " attaque ", target.getName(),
+                " et inflige ", damage, " degats !"
+            );
+            ensea_logging::log_debug(
+                target.getName(), " a maintenant ",
+                target.getHitPoint(), " points de vie."
+            );
+        }
     }
 }

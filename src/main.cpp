@@ -50,7 +50,7 @@ int main() {
 #include "../header/WelcomeState.hpp"
 
 int main() {
-    srand(static_cast<unsigned>(time(0))); // Initialiser le générateur de nombres aléatoires
+    srand(static_cast<unsigned>(time(0)));
     StateMachine sm;
     sm.setState(new WelcomeState());
 

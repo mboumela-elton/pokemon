@@ -48,7 +48,7 @@ bool PokemonParty::extractPokemon(std::string name) {
     if (it != pokemons.end()) {
         pokemons.erase(it, pokemons.end());
         ensea_logging::log_debug(
-            name, " a été extrait."
+            name, " a ete extrait."
         );
         return true;
     } else {
@@ -67,7 +67,7 @@ void PokemonParty::displayParty() const {
         return;
     }
 
-    ensea_logging::log_debug("Pokémons dans la partie :");
+    ensea_logging::log_debug("Pokemons dans la partie :\n");
     for (const auto& pokemon : pokemons) {
         pokemon.displayInfo();
     }

@@ -14,9 +14,16 @@ class PokemonAttack : public PokemonParty {
 private:
     static constexpr int MAX_POKEMON = 6;
 
-public:
+private:
+    static PokemonAttack * instance;
     PokemonAttack() = default;
+
+public:
     void addPokemon(Pokemon &pokemon);
+    PokemonAttack(PokemonAttack& other) = delete;
+    static PokemonAttack* getInstance();
+    void displayParty() const;
+
 };
 
 #endif //POKEMON_POKEMONATTACK_HPP

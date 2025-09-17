@@ -16,13 +16,13 @@ add_executable(pokemon src/main.cpp
         header/PokemonAttack.hpp
         src/utils/ensea_log.cpp
         header/State.hpp
-        src/StateMachine.cpp
+        src/statemanagement/StateMachine.cpp
         header/StateMachine.hpp
-        src/WelcomeState.cpp
+        src/statemanagement/WelcomeState.cpp
         header/WelcomeState.hpp
-        src/ExplorationState.cpp
+        src/statemanagement/ExplorationState.cpp
         header/ExplorationState.hpp
-        src/BattleState.cpp
+        src/statemanagement/BattleState.cpp
         header/BattleState.hpp
-        src/GameOverState.cpp
+        src/statemanagement/GameOverState.cpp
         header/GameOverState.hpp)
